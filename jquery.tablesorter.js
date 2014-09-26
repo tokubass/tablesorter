@@ -387,8 +387,15 @@
                 var meta = ($.metadata) ? true : false;
                 
                 var header_index = computeTableHeaderCellIndexes(table);
+                var select_headers  = $(table.config.selectorHeaders, table);
+                jQuery.each(table.config.headers, function(i, val) {
+                    if ( i < 0 ) {
+                        delete table.config.headers[i];
+                        table.config.headers[ select_headers.length + Number(i) ] = val;
+                    }
+                });
 
-                var $tableHeaders = $(table.config.selectorHeaders, table).each(function (index) {
+                var $tableHeaders = $(selector_headers).each(function (index) {
 
                     this.column = header_index[this.parentNode.rowIndex + "-" + this.cellIndex];
                     // this.column = index;
