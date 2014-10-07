@@ -395,7 +395,7 @@
                     }
                 });
 
-                var $tableHeaders = $(selector_headers).each(function (index) {
+                var $tableHeaders = $(select_headers).each(function (index) {
 
                     this.column = header_index[this.parentNode.rowIndex + "-" + this.cellIndex];
                     // this.column = index;
